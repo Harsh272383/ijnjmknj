@@ -1,0 +1,57 @@
+def calculate_simple_interest(principal, rate, time):
+    """
+    Calculate simple interest.
+
+    Args:
+    principal (float): The principal amount.
+    rate (float): The annual interest rate (as a decimal).
+    time (float): The time period (in years).
+
+    Returns:
+    float: The simple interest amount.
+    """
+    interest = principal * rate * time
+    return interest
+
+def calculate_compound_interest(principal, rate, time, compounds_per_year):
+    """
+    Calculate compound interest.
+
+    Args:
+    principal (float): The principal amount.
+    rate (float): The annual interest rate (as a decimal).
+    time (float): The time period (in years).
+    compounds_per_year (int): The number of times interest is compounded per year.
+
+    Returns:
+    float: The compound interest amount.
+    """
+    compound_interest = principal * ((1 + rate / compounds_per_year) ** (compounds_per_year * time) - 1)
+    return compound_interest
+
+def main():
+    print("Financial Calculator")
+    print("Options:")
+    print("1. Calculate Simple Interest")
+    print("2. Calculate Compound Interest")
+    
+    choice = input("Enter your choice (1/2): ")
+
+    if choice == "1":
+        principal = float(input("Enter the principal amount: "))
+        rate = float(input("Enter the annual interest rate (as a decimal): "))
+        time = float(input("Enter the time period (in years): "))
+        simple_interest = calculate_simple_interest(principal, rate, time)
+        print(f"Simple Interest: ${simple_interest:.2f}")
+    elif choice == "2":
+        principal = float(input("Enter the principal amount: "))
+        rate = float(input("Enter the annual interest rate (as a decimal): "))
+        time = float(input("Enter the time period (in years): "))
+        compounds_per_year = int(input("Enter the number of times interest is compounded per year: "))
+        compound_interest = calculate_compound_interest(principal, rate, time, compounds_per_year)
+        print(f"Compound Interest: ${compound_interest:.2f}")
+    else:
+        print("Invalid choice. Please select 1 or 2.")
+
+if __name__ == "__main__":
+    main()
